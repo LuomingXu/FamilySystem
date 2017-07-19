@@ -19,6 +19,10 @@ namespace FamilySystem
 
         FormUserInfo FrmUserInfo = null;
         FormAppInfo appInfo = null;
+        FormCardManager cardManage = null;
+        FormCountSearch FrmCountSearch = null;
+
+        private string strUserName = string.Empty;
 
         private void systemManage_Click(object sender, EventArgs e)
         {
@@ -79,7 +83,54 @@ namespace FamilySystem
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-           
+            string[] strTemp = toolStripStatusLabel1.Text.Trim().Split(':');
+            strUserName = strTemp[1].ToString();
+        }
+
+        private void MenuCardManage_Click(object sender, EventArgs e)
+        {
+            if (cardManage == null)
+            {
+                cardManage = new FormCardManager(strUserName);
+                cardManage.MdiParent = this;
+                cardManage.Show();
+            }
+            else
+            {
+                if (cardManage.IsDisposed == true)
+                {
+                    cardManage = new FormCardManager(strUserName);
+                    cardManage.MdiParent = this;
+                    cardManage.Show();
+                }
+                else
+                {
+                    cardManage.Activate();
+                }
+            }
+        }
+
+        private void MenuMoneyManage_Click(object sender, EventArgs e)
+        {
+            if (FrmCountSearch == null)
+            {
+                FrmCountSearch = new FormCountSearch();
+                FrmCountSearch.MdiParent = this;
+                FrmCountSearch.Show();
+            }
+            else
+            {
+                if (FrmCountSearch.IsDisposed == true)
+                {
+                    FrmCountSearch = new FormCountSearch();
+                    FrmCountSearch.MdiParent = this;
+                    FrmCountSearch.Show();
+                }
+                else
+                {
+                    FrmCountSearch.Activate();
+                }
+            }
         }
     }
 }

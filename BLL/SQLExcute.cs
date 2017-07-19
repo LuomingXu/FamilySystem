@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DBAccess;
 using System.Data;
 using UserInfo;
+using CardInfo;
 
 namespace BLL
 {
@@ -32,6 +33,14 @@ namespace BLL
             string strSQL = $"select PWD from tb_Users where UserName='{strUserName}'";
 
             return access.SQLServer(strSQL, "密码表");
+        }
+
+        public DataTable IdentifyCard(string strCardNumber)
+        {
+            string strSQL = $"select CardPWD from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL, "卡片密码表").Tables[0];
         }
 
         /// <summary>
@@ -80,6 +89,31 @@ namespace BLL
         }
 
         /// <summary>
+        /// 获取所有的存储卡信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllCardInfo()
+        {
+            string strSQL = $"select * " +
+                $"from CardInfo as a";
+
+            return access.SQLServer(strSQL, "所有卡片信息表").Tables[0];
+        }
+
+        /// <summary>
+        /// 获取单一卡号的存储卡信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetCardInfoByNumber(string strCardNumber)
+        {
+            string strSQL = $"select * " +
+                $"from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL, "单一卡片信息表").Tables[0];
+        }
+
+        /// <summary>
         /// 判断用户名是否唯一存在, 返回此用户名的个数
         /// </summary>
         /// <param name="strUserName"></param>
@@ -90,6 +124,19 @@ namespace BLL
                 $"where UserName='{strUserName}'";
 
             return access.SQLServer(strSQL, "验证用户名是否唯一表").Tables["验证用户名是否唯一表"].DefaultView.Count;
+        }
+
+        /// <summary>
+        /// 判断存储号是否存在
+        /// </summary>
+        /// <param name="strCardNumber">卡片号</param>
+        /// <returns>是否存在</returns>
+        public bool ConfirmTheOnlyCardNumber(string strCardNumber)
+        {
+            string strSQL = $"select CardNumber from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL, "验证存储卡号是否唯一表").Tables[0].DefaultView.Count == 1;
         }
 
         /// <summary>
@@ -132,6 +179,11 @@ namespace BLL
             return access.SQLServer(strSQL) > 0;
         }
 
+        /// <summary>
+        /// 更新用户信息
+        /// </summary>
+        /// <param name="user">用户类</param>
+        /// <returns>是否更新成功</returns>
         public bool UpdateUserInfo(User user)
         {
             string strSQL = $"update tb_Users set Level={user.Level}," +
@@ -142,6 +194,40 @@ namespace BLL
             return access.SQLServer(strSQL) > 0;
         }
 
+        /// <summary>
+        /// 更新余额信息
+        /// </summary>
+        /// <param name="dbBalance">修改后的余额</param>
+        /// <returns>是否更新了</returns>
+        public bool UpdateBalance(double dbBalance, string strCardNumber)
+        {
+            string strSQL = $"update CardInfo set " +
+                $"Balance={dbBalance} " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL) == 1;
+        }
+
+        /// <summary>
+        /// 获取余额
+        /// </summary>
+        /// <param name="strCardNumber">卡号</param>
+        /// <returns>余额</returns>
+        public string GetBalanceByCardNumber(string strCardNumber)
+        {
+            string strSQL = $"select Balance " +
+                $"from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return Convert.ToString(access.SQLServer(strSQL, "余额表").Tables[0].Rows[0][0]);
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="PWD">新密码</param>
+        /// <param name="strUserName">用户名</param>
+        /// <returns>是否修改成功</returns>
         public bool ModifyPWD(string PWD, string strUserName)
         {
             string strSQL = $"update tb_Users " +
@@ -150,5 +236,36 @@ namespace BLL
 
             return access.SQLServer(strSQL) == 1;
         }
+
+        /// <summary>
+        /// 从数据库获取银行名称
+        /// </summary>
+        /// <returns>DataTable</returns>
+        public DataTable GetBankName()
+        {
+            string strSQL = $"select * from BankName";
+
+            return access.SQLServer(strSQL, "银行名称表").Tables["银行名称表"];
+        }
+
+        /// <summary>
+        /// 添加存储卡信息
+        /// </summary>
+        /// <param name="card">存储卡类</param>
+        /// <returns>是否添加成功</returns>
+        public bool InsertCardInfo(Card card)
+        {
+            string strSQL = $"insert into CardInfo" +
+                $"(WhoCreatCard,WhoHoldCard,CardNumber,CardPWD,BankName,Balance) " +
+                $"values('{card.WhoCreatCard}'," +
+                $"'{card.WhoHoldCard}'," +
+                $"'{card.CardName}'," +
+                $"'{card.CardPWD}'," +
+                $"'{card.BankName}'," +
+                $"{card.Balance})";
+
+            return access.SQLServer(strSQL) == 1;
+        }
+
     }
 }
