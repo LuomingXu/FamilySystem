@@ -214,7 +214,7 @@
             // 
             this.LblCreatTime.AutoSize = true;
             this.LblCreatTime.Font = new System.Drawing.Font("宋体", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblCreatTime.Location = new System.Drawing.Point(63, 627);
+            this.LblCreatTime.Location = new System.Drawing.Point(26, 625);
             this.LblCreatTime.Name = "LblCreatTime";
             this.LblCreatTime.Size = new System.Drawing.Size(165, 37);
             this.LblCreatTime.TabIndex = 15;
@@ -223,11 +223,11 @@
             // 
             // TxtCreatTime
             // 
-            this.TxtCreatTime.Font = new System.Drawing.Font("宋体", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TxtCreatTime.Location = new System.Drawing.Point(275, 627);
+            this.TxtCreatTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TxtCreatTime.Location = new System.Drawing.Point(213, 625);
             this.TxtCreatTime.Name = "TxtCreatTime";
             this.TxtCreatTime.ReadOnly = true;
-            this.TxtCreatTime.Size = new System.Drawing.Size(251, 50);
+            this.TxtCreatTime.Size = new System.Drawing.Size(418, 44);
             this.TxtCreatTime.TabIndex = 16;
             this.TxtCreatTime.Visible = false;
             // 
@@ -305,6 +305,7 @@
             this.Name = "FormRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户注册";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRegister_FormClosed);
             this.Load += new System.EventHandler(this.FormRegister_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

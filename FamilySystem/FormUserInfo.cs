@@ -11,17 +11,35 @@ using BLL;
 
 namespace FamilySystem
 {
-    public partial class FormUserInfo : Form
+    public partial class FormUserInfo : Form, INterface
     {
         public FormUserInfo()
         {
             InitializeComponent();
         }
 
+        private FormRegister FrmRegister = null;
+
+        public void ChangeDataGridView(DataTable dt)
+        {
+            dataGridView1.DataSource = dt;
+        }
+
+        private void GetAllUserInfo()
+        {
+            SQLExcute excute = new SQLExcute();
+            dataGridView1.DataSource = excute.GetAllUserInfo().Tables["用户信息表"];
+        }
+
         /// <summary>
         /// 全From保存的用户名
         /// </summary>
         private string strUserName = string.Empty;
+
+        /// <summary>
+        /// 删除时保存用户选择删除的用户名
+        /// </summary>
+        private string strSelectedUserName = string.Empty;
 
         //在此load事件中确定了登录用户的等级, 以此来确定实例化一个怎样的
         //用户修改窗体, 怎样的右键菜单, 不同的右键菜单下有不一样的菜单项
@@ -32,7 +50,7 @@ namespace FamilySystem
             strUserName = strTempUserName[1];
 
             TxtSearch.Text = "请在此需要输入查询的用户名...";
-            
+
             SQLExcute excute = new SQLExcute();
             dataGridView1.DataSource = excute.GetAllUserInfo().Tables["用户信息表"];
 
@@ -79,26 +97,103 @@ namespace FamilySystem
 
         private void CtmItemInsert_Click(object sender, EventArgs e)
         {
-            FormRegister FrmRegister = new FormRegister();
-            FrmRegister.Show();
+            if (FrmRegister == null)
+            {
+                FrmRegister = new FormRegister(this, this.MdiParent);
+                FrmRegister.Show();
+            }
+            else if (FrmRegister != null)
+            {
+                if (FrmRegister.IsDisposed == true)
+                {
+                    FrmRegister = new FormRegister(this, this.MdiParent);
+                    FrmRegister.Show();
+                }
+                else
+                {
+                    FrmRegister.Activate();
+                }
+            }
         }
 
         private void CtmItemUpdate_Click(object sender, EventArgs e)
         {
-            FormRegister FrmRegister = new FormRegister(strUserName);
-            FrmRegister.Show();
-        }
-
-        private void CtmItemDelete_Click(object sender, EventArgs e)
-        {
-            FormDelete FrmDel = new FormDelete(strUserName);
-            FrmDel.Show();
+            if (FrmRegister == null)
+            {
+                FrmRegister = new FormRegister(strUserName, this, this.MdiParent);
+                FrmRegister.Show();
+            }
+            else if (FrmRegister != null)
+            {
+                if (FrmRegister.IsDisposed == true)
+                {
+                    FrmRegister = new FormRegister(strUserName, this, this.MdiParent);
+                    FrmRegister.Show();
+                }
+                else
+                {
+                    FrmRegister.Activate();
+                }                 
+            }
         }
 
         private void CtmItmUpdateNormal_Click(object sender, EventArgs e)
         {
-            FormRegister FrmRegister = new FormRegister(strUserName,"Normal");
-            FrmRegister.Show();
+            if (FrmRegister == null)
+            {
+                FrmRegister = new FormRegister(strUserName, "Normal", this, this.MdiParent);
+                FrmRegister.Show();
+            }
+            else if (FrmRegister != null)
+            {
+                if (FrmRegister.IsDisposed == true)
+                {
+                    FrmRegister = new FormRegister(strUserName, "Normal", this, this.MdiParent);
+                    FrmRegister.Show();
+                }
+                else
+                {
+                    FrmRegister.Activate();
+                }                 
+            }
+        }
+
+        private void CtmItemDelete_Click(object sender, EventArgs e)
+        {
+            //FormDelete FrmDel = new FormDelete(strUserName);
+            //FrmDel.Show();
+            if (strSelectedUserName.Equals(string.Empty) != true)
+            {
+                SQLExcute excute = new SQLExcute();
+
+                if (strSelectedUserName.Equals(strUserName))
+                {
+                    MessageBox.Show("不可以删除自己!",
+                        "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                DialogResult isExit =
+                    MessageBox.Show("真的要删除\"" + strSelectedUserName + "\"的数据吗?",
+                    "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (isExit.Equals(DialogResult.Yes))
+                {
+                    if (excute.DeleteUserInfo(strSelectedUserName))
+                    {
+                        MessageBox.Show("删除成功!",
+                            "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败!",
+                            "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+
+            GetAllUserInfo();
         }
 
         private void TxtSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -132,6 +227,23 @@ namespace FamilySystem
         private void CtmItmMdPwdNormal_Click(object sender, EventArgs e)
         {
             ShowMdPwd();
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {//右键直接点击, 可以直接选择一行数据
+            if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                strSelectedUserName = Convert.ToString(dataGridView1.CurrentRow.Cells["UserName"].Value);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {//左键点击, 选择一行数据
+            if (e.RowIndex > -1)
+            {
+                strSelectedUserName = Convert.ToString(dataGridView1.CurrentRow.Cells["UserName"].Value);
+            }
         }
     }
 }

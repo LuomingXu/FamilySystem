@@ -144,11 +144,15 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 31);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 37;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1576, 713);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
             // UserName
             // 
@@ -202,19 +206,19 @@
             this.CtmItmUpdateNormal,
             this.CtmItmMdPwdNormal});
             this.CTMNormal.Name = "CTMNormal";
-            this.CTMNormal.Size = new System.Drawing.Size(245, 120);
+            this.CTMNormal.Size = new System.Drawing.Size(185, 76);
             // 
             // CtmItmUpdateNormal
             // 
             this.CtmItmUpdateNormal.Name = "CtmItmUpdateNormal";
-            this.CtmItmUpdateNormal.Size = new System.Drawing.Size(244, 36);
+            this.CtmItmUpdateNormal.Size = new System.Drawing.Size(184, 36);
             this.CtmItmUpdateNormal.Text = "更改用户";
             this.CtmItmUpdateNormal.Click += new System.EventHandler(this.CtmItmUpdateNormal_Click);
             // 
             // CtmItmMdPwdNormal
             // 
             this.CtmItmMdPwdNormal.Name = "CtmItmMdPwdNormal";
-            this.CtmItmMdPwdNormal.Size = new System.Drawing.Size(244, 36);
+            this.CtmItmMdPwdNormal.Size = new System.Drawing.Size(184, 36);
             this.CtmItmMdPwdNormal.Text = "修改密码";
             this.CtmItmMdPwdNormal.Click += new System.EventHandler(this.CtmItmMdPwdNormal_Click);
             // 
@@ -291,7 +295,7 @@
         private System.Windows.Forms.ToolStripTextBox TxtSearch;
         private System.Windows.Forms.ToolStripMenuItem BtnSearch;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ContextMenuStrip CtmAdm;

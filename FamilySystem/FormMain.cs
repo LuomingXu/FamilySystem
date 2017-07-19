@@ -17,13 +17,36 @@ namespace FamilySystem
             InitializeComponent();
         }
 
+        FormUserInfo FrmUserInfo = null;
+        FormAppInfo appInfo = null;
+
         private void systemManage_Click(object sender, EventArgs e)
         {
-            FormUserInfo FrmUserInfo = new FormUserInfo();
-            string[] strTemp = toolStripStatusLabel1.Text.Trim().Split(':');
-            FrmUserInfo.toolStripStatusLabel1.Text = "当前用户:" + strTemp[1].ToString();
+            if (FrmUserInfo == null)
+            {
+                FrmUserInfo = new FormUserInfo();
+                string[] strTemp = toolStripStatusLabel1.Text.Trim().Split(':');
+                FrmUserInfo.toolStripStatusLabel1.Text = "当前用户:" + strTemp[1].ToString();
 
-            FrmUserInfo.Show();
+                FrmUserInfo.MdiParent = this;
+                FrmUserInfo.Show();
+            }
+            else
+            {
+                if (FrmUserInfo.IsDisposed == true)
+                {
+                    FrmUserInfo = new FormUserInfo();
+                    string[] strTemp = toolStripStatusLabel1.Text.Trim().Split(':');
+                    FrmUserInfo.toolStripStatusLabel1.Text = "当前用户:" + strTemp[1].ToString();
+
+                    FrmUserInfo.MdiParent = this;
+                    FrmUserInfo.Show();
+                }
+                else
+                {
+                    FrmUserInfo.Activate();
+                }
+            }
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -33,8 +56,30 @@ namespace FamilySystem
 
         private void CtmHelpItemAbout_Click(object sender, EventArgs e)
         {
-            FormAppInfo appInfo = new FormAppInfo();
-            appInfo.Show();
+            if (appInfo == null)
+            {
+                appInfo = new FormAppInfo();
+                appInfo.MdiParent = this;
+                appInfo.Show();
+            }
+            else
+            {
+                if (appInfo.IsDisposed == true)
+                {
+                    appInfo = new FormAppInfo();
+                    appInfo.MdiParent = this;
+                    appInfo.Show();
+                }
+                else
+                {
+                    appInfo.Activate();
+                }           
+            }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

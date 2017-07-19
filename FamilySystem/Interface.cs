@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace FamilySystem
 {
     public interface INterface
     {
-        void ChangeLbl(string Lbl);
+        void ChangeDataGridView(DataTable dt);
+    }
+    public interface MDiTransfer
+    {
+        void TransferMdi(FormMain main);
     }
 }

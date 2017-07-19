@@ -25,7 +25,7 @@ namespace FamilySystem
 
             {//测试代码
                 TxtUserName.Text = "123";
-                TxtPWD.Text = "123";
+                TxtPWD.Text = "qwe";
             }
         }
 

@@ -15,15 +15,28 @@ namespace DBAccess
     {
         private StackTrace st = new StackTrace();
 
-        ///// <summary>
-        ///// 从DB.config里面读取, 链接字符串
-        ///// </summary>
-        //private string strConnString = ConfigurationManager.ConnectionStrings["strConnStrings"].ConnectionString;
+        private static string strConnectionString = ConfigurationManager.ConnectionStrings["MyLocalSQLserverConnectionstring"].ConnectionString;
 
-        /// <summary>
-        /// 连接字符串
-        /// </summary>
-        private string strConnectionString = "Data Source=徐络溟\\SQLEXPRESS;Initial Catalog=FamilySystemTest;Integrated Security=True";
+        private static void GetConnectionStringByName(string name)
+        {
+            if (name.Equals(string.Empty))
+            {
+                name = "MyLocalSQLserverConnectionstring";
+            }
+            
+            // Assume failure.
+            string returnValue = null;
+
+            // Look for the name in the connectionStrings section.
+            ConnectionStringSettings settings =
+                ConfigurationManager.ConnectionStrings[name];
+
+            // If found, return the connection string.
+            if (settings != null)
+                returnValue = settings.ConnectionString;
+
+            strConnectionString = returnValue;
+        }
 
         /// <summary>
         /// 从SQLserver里面获取DataSet, 

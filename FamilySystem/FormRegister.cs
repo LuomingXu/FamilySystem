@@ -15,14 +15,12 @@ namespace FamilySystem
 {
     public partial class FormRegister : Form
     {
+        private INterface DataChange;
+
         public FormRegister()
         {
             InitializeComponent();
         }
-
-        private string strUserName = string.Empty;
-        private User user = new User();
-        private string strLevel = string.Empty;
 
         private void Edit(string strUserName)
         {
@@ -77,8 +75,15 @@ namespace FamilySystem
             TxtCreatTime.Text = Convert.ToString(ds.Tables[0].Rows[0][3]);
         }
 
+        public FormRegister(INterface DataChange,Form main)
+        {
+            InitializeComponent();
+            this.DataChange = DataChange;
+            this.MdiParent = main;
+        }
+
         //管理员账户实例化的修改界面
-        public FormRegister(string strUserName)
+        public FormRegister(string strUserName, INterface DataChange,Form main)
         {
             InitializeComponent();
 
@@ -86,12 +91,15 @@ namespace FamilySystem
             //这样在txtchange事件时, 就会不再使用注册的时候使用的lbl的判断代码
             //而是使用, 在修改用户信息的时候使用的lbl的判断代码
             Edit(strUserName);
-        
+
             TXTUserName.ReadOnly = false;
+
+            this.DataChange = DataChange;
+            this.MdiParent = main;
         }
 
         //普通用户实例化的修改界面
-        public FormRegister(string strUserName, string strLevel)
+        public FormRegister(string strUserName, string strLevel, INterface DataChange,Form main)
         {
             InitializeComponent();
 
@@ -100,7 +108,17 @@ namespace FamilySystem
             this.strLevel = strLevel;
             panel1.Visible = false;
             LblLevel.Text = "权限:      普通用户";
+
+            this.DataChange = DataChange;
+            this.MdiParent = main;
         }
+
+        /// <summary>
+        /// 全Form保存的userName
+        /// </summary>
+        private string strUserName = string.Empty;
+        private User user = new User();
+        private string strLevel = string.Empty;
 
         private void BtnRegister_Click(object sender, EventArgs e)
         {
@@ -178,7 +196,12 @@ namespace FamilySystem
 
             int ret = 0;
             SQLExcute excute = new SQLExcute();
+            DataTable dt = new DataTable();
+            dt = excute.GetUserInfoByUserName(strUserName).Tables[0];
             ret = excute.ConfirmTheOnlyUserName(strUserName);
+
+            string strUserLevel = Convert.ToString(dt.Rows[0][1]);
+            string strUserEnable = Convert.ToString(dt.Rows[0][2]);
 
             if (strLevel.Equals("Adm"))//在修改用户的时候使用的代码
             {
@@ -190,6 +213,26 @@ namespace FamilySystem
                     LblConfirmUserName.ForeColor = Color.Green;
                     LblConfirmUserName.Visible = true;
                     BtnUpdate.Enabled = true;
+
+                    TxtCreatTime.Text = Convert.ToString(dt.Rows[0]["CreatTime"]);
+
+                    if (strUserLevel.Equals("管理员"))
+                    {
+                        RdbAdm.Checked = true;
+                    }
+                    else
+                    {
+                        RdbNormal.Checked = true;
+                    }
+
+                    if (strUserEnable.Equals("是"))
+                    {
+                        RdbEnableTrue.Checked = true;
+                    }
+                    else
+                    {
+                        RdbEnableFalse.Checked = true;
+                    }
                 }
                 else
                 {
@@ -197,6 +240,13 @@ namespace FamilySystem
                     LblConfirmUserName.ForeColor = Color.Red;
                     LblConfirmUserName.Visible = true;
                     BtnUpdate.Enabled = false;
+
+                    TxtCreatTime.Text = string.Empty;
+
+                    RdbAdm.Checked = false;
+                    RdbNormal.Checked = false;
+                    RdbEnableTrue.Checked = false;
+                    RdbEnableFalse.Checked = false;
                 }
 
                 return;
@@ -232,6 +282,8 @@ namespace FamilySystem
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
+            user.Name = TXTUserName.Text.Trim();
+
             if (RdbAdm.Checked == true)
             {
                 user.Level = 1;
@@ -251,7 +303,7 @@ namespace FamilySystem
             }
 
             DialogResult isUpdate;
-            isUpdate = MessageBox.Show("是否更新?",
+            isUpdate = MessageBox.Show("确定修改\""+ user.Name+"\"的信息",
                 "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (isUpdate.Equals(DialogResult.Yes))
@@ -275,6 +327,12 @@ namespace FamilySystem
         private void FormRegister_Load(object sender, EventArgs e)
         {
             TXTUserName.Text = strUserName;
+        }
+
+        private void FormRegister_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SQLExcute excute = new SQLExcute();
+            DataChange.ChangeDataGridView(excute.GetAllUserInfo().Tables[0]);
         }
     }
 }

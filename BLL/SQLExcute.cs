@@ -69,11 +69,12 @@ namespace BLL
         /// <returns></returns>
         public DataSet GetUserInfoByUserName(string strUserName)
         {
-            string strSQL = $"select a.UserName,b.UserLevel,a.Enable,a.CreatTime " +
+            string strSQL = $"select a.UserName,b.UserLevel,a.Enable,a.CreatTime,a.UpdateTime " +
                                 $"from tb_Users as a " +
                                 $"left join Level as b " +
                                 $"on a.Level = b.Level " +
-                                $"where UserName='{strUserName}'";
+                                $"where UserName " +
+                                $"like '%{strUserName}%'";
 
             return access.SQLServer(strSQL, "单一用户信息表");
         }

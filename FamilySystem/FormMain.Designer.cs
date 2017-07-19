@@ -65,32 +65,32 @@
             this.存储卡管理ToolStripMenuItem,
             this.系统操作日志ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(152, 35);
             this.文件ToolStripMenuItem.Text = "系统设置(&S)";
             // 
             // systemManage
             // 
             this.systemManage.Name = "systemManage";
-            this.systemManage.Size = new System.Drawing.Size(268, 38);
+            this.systemManage.Size = new System.Drawing.Size(256, 38);
             this.systemManage.Text = "系统用户管理";
             this.systemManage.Click += new System.EventHandler(this.systemManage_Click);
             // 
             // 存储卡管理ToolStripMenuItem
             // 
             this.存储卡管理ToolStripMenuItem.Name = "存储卡管理ToolStripMenuItem";
-            this.存储卡管理ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.存储卡管理ToolStripMenuItem.Size = new System.Drawing.Size(256, 38);
             this.存储卡管理ToolStripMenuItem.Text = "存储卡管理";
             // 
             // 系统操作日志ToolStripMenuItem
             // 
             this.系统操作日志ToolStripMenuItem.Name = "系统操作日志ToolStripMenuItem";
-            this.系统操作日志ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.系统操作日志ToolStripMenuItem.Size = new System.Drawing.Size(256, 38);
             this.系统操作日志ToolStripMenuItem.Text = "系统操作日志";
             // 
             // 家政财务报表TToolStripMenuItem
             // 
             this.家政财务报表TToolStripMenuItem.Name = "家政财务报表TToolStripMenuItem";
-            this.家政财务报表TToolStripMenuItem.Size = new System.Drawing.Size(200, 38);
+            this.家政财务报表TToolStripMenuItem.Size = new System.Drawing.Size(200, 35);
             this.家政财务报表TToolStripMenuItem.Text = "家政财务报表(&T)";
             // 
             // 帮助ToolStripMenuItem
@@ -101,31 +101,31 @@
             this.注册产品ToolStripMenuItem,
             this.CtmHelpItemAbout});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(109, 38);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(109, 35);
             this.帮助ToolStripMenuItem.Text = "帮助(&H)";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.关于ToolStripMenuItem.Text = "查看帮助";
             // 
             // 发送反馈ToolStripMenuItem
             // 
             this.发送反馈ToolStripMenuItem.Name = "发送反馈ToolStripMenuItem";
-            this.发送反馈ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.发送反馈ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.发送反馈ToolStripMenuItem.Text = "发送反馈";
             // 
             // 注册产品ToolStripMenuItem
             // 
             this.注册产品ToolStripMenuItem.Name = "注册产品ToolStripMenuItem";
-            this.注册产品ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.注册产品ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.注册产品ToolStripMenuItem.Text = "注册产品";
             // 
             // CtmHelpItemAbout
             // 
             this.CtmHelpItemAbout.Name = "CtmHelpItemAbout";
-            this.CtmHelpItemAbout.Size = new System.Drawing.Size(268, 38);
+            this.CtmHelpItemAbout.Size = new System.Drawing.Size(208, 38);
             this.CtmHelpItemAbout.Text = "关于";
             this.CtmHelpItemAbout.Click += new System.EventHandler(this.CtmHelpItemAbout_Click);
             // 
@@ -153,13 +153,14 @@
             this.ClientSize = new System.Drawing.Size(1597, 811);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "家政财务管理系统";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
