@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCardManager));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -36,9 +37,6 @@
             this.menuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmsDataGird = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsBtnModifyPWD = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsBtnModifyWhoHoldCard = new System.Windows.Forms.ToolStripMenuItem();
             this.CardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BankName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +44,9 @@
             this.WhoCreatCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreatTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CardPWD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsDataGird = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsBtnModifyPWD = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBtnModifyWhoHoldCard = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -131,29 +132,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
-            // cmsDataGird
-            // 
-            this.cmsDataGird.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.cmsDataGird.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsBtnModifyPWD,
-            this.cmsBtnModifyWhoHoldCard});
-            this.cmsDataGird.Name = "cmsDataGird";
-            this.cmsDataGird.Size = new System.Drawing.Size(209, 76);
-            // 
-            // cmsBtnModifyPWD
-            // 
-            this.cmsBtnModifyPWD.Name = "cmsBtnModifyPWD";
-            this.cmsBtnModifyPWD.Size = new System.Drawing.Size(208, 36);
-            this.cmsBtnModifyPWD.Text = "修改密码";
-            this.cmsBtnModifyPWD.Click += new System.EventHandler(this.cmsBtnModifyPWD_Click);
-            // 
-            // cmsBtnModifyWhoHoldCard
-            // 
-            this.cmsBtnModifyWhoHoldCard.Name = "cmsBtnModifyWhoHoldCard";
-            this.cmsBtnModifyWhoHoldCard.Size = new System.Drawing.Size(208, 36);
-            this.cmsBtnModifyWhoHoldCard.Text = "修改持卡人";
-            this.cmsBtnModifyWhoHoldCard.Click += new System.EventHandler(this.cmsBtnModifyWhoHoldCard_Click);
-            // 
             // CardNumber
             // 
             this.CardNumber.DataPropertyName = "CardNumber";
@@ -214,6 +192,29 @@
             this.CardPWD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CardPWD.Visible = false;
             // 
+            // cmsDataGird
+            // 
+            this.cmsDataGird.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.cmsDataGird.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsBtnModifyPWD,
+            this.cmsBtnModifyWhoHoldCard});
+            this.cmsDataGird.Name = "cmsDataGird";
+            this.cmsDataGird.Size = new System.Drawing.Size(209, 76);
+            // 
+            // cmsBtnModifyPWD
+            // 
+            this.cmsBtnModifyPWD.Name = "cmsBtnModifyPWD";
+            this.cmsBtnModifyPWD.Size = new System.Drawing.Size(208, 36);
+            this.cmsBtnModifyPWD.Text = "修改密码";
+            this.cmsBtnModifyPWD.Click += new System.EventHandler(this.cmsBtnModifyPWD_Click);
+            // 
+            // cmsBtnModifyWhoHoldCard
+            // 
+            this.cmsBtnModifyWhoHoldCard.Name = "cmsBtnModifyWhoHoldCard";
+            this.cmsBtnModifyWhoHoldCard.Size = new System.Drawing.Size(208, 36);
+            this.cmsBtnModifyWhoHoldCard.Text = "修改持卡人";
+            this.cmsBtnModifyWhoHoldCard.Click += new System.EventHandler(this.cmsBtnModifyWhoHoldCard_Click);
+            // 
             // FormCardManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -222,6 +223,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormCardManager";

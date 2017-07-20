@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDelete));
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnDelete = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtUserName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "FormDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
