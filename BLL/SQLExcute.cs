@@ -238,6 +238,21 @@ namespace BLL
         }
 
         /// <summary>
+        /// 修改存储卡密码
+        /// </summary>
+        /// <param name="PWD">新的密码</param>
+        /// <param name="strCardNumber">卡号</param>
+        /// <returns>是否更新成功</returns>
+        public bool ModifyCardPWD(string PWD,string strCardNumber)
+        {
+            string strSQL = $"update CardInfo " +
+                $"set CardPWD='{PWD}' " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL) == 1;
+        }
+
+        /// <summary>
         /// 从数据库获取银行名称
         /// </summary>
         /// <returns>DataTable</returns>
@@ -246,6 +261,35 @@ namespace BLL
             string strSQL = $"select * from BankName";
 
             return access.SQLServer(strSQL, "银行名称表").Tables["银行名称表"];
+        }
+
+        /// <summary>
+        /// 从数据库获取持卡人信息
+        /// </summary>
+        /// <param name="strCardNumber">卡号</param>
+        /// <returns>持卡人信息</returns>
+        public string GetWhoHoldCard(string strCardNumber)
+        {
+            string strSQL = $"select WhoHoldCard " +
+                $"from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return Convert.ToString(access.SQLServer(strSQL, "持卡人表").Tables[0].Rows[0][0]);
+        }
+
+        /// <summary>
+        /// 更新持卡人信息
+        /// </summary>
+        /// <param name="strCardNumber">卡号</param>
+        /// <param name="strWhoHoldCardNow">新持卡人</param>
+        /// <returns>是否修改成功</returns>
+        public bool UpdateWhoHoldCard(string strCardNumber, string strWhoHoldCardNow)
+        {
+            string strSQL = $"update CardInfo " +
+                $"set WhoHoldCard='{strWhoHoldCardNow}' " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL) == 1;
         }
 
         /// <summary>

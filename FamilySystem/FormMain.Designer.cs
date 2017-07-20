@@ -34,6 +34,7 @@
             this.MenuCardManage = new System.Windows.Forms.ToolStripMenuItem();
             this.系统操作日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.家政财务报表TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMoneyManage = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发送反馈ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,6 @@
             this.CtmHelpItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MenuMoneyManage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1597, 42);
+            this.menuStrip2.Size = new System.Drawing.Size(1597, 39);
             this.menuStrip2.TabIndex = 3;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -66,27 +66,27 @@
             this.MenuCardManage,
             this.系统操作日志ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(149, 38);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(149, 35);
             this.文件ToolStripMenuItem.Text = "系统设置(&s)";
             // 
             // systemManage
             // 
             this.systemManage.Name = "systemManage";
-            this.systemManage.Size = new System.Drawing.Size(268, 38);
+            this.systemManage.Size = new System.Drawing.Size(256, 38);
             this.systemManage.Text = "系统用户管理";
             this.systemManage.Click += new System.EventHandler(this.systemManage_Click);
             // 
             // MenuCardManage
             // 
             this.MenuCardManage.Name = "MenuCardManage";
-            this.MenuCardManage.Size = new System.Drawing.Size(268, 38);
+            this.MenuCardManage.Size = new System.Drawing.Size(256, 38);
             this.MenuCardManage.Text = "存储卡管理";
             this.MenuCardManage.Click += new System.EventHandler(this.MenuCardManage_Click);
             // 
             // 系统操作日志ToolStripMenuItem
             // 
             this.系统操作日志ToolStripMenuItem.Name = "系统操作日志ToolStripMenuItem";
-            this.系统操作日志ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.系统操作日志ToolStripMenuItem.Size = new System.Drawing.Size(256, 38);
             this.系统操作日志ToolStripMenuItem.Text = "系统操作日志";
             // 
             // 家政财务报表TToolStripMenuItem
@@ -94,8 +94,15 @@
             this.家政财务报表TToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuMoneyManage});
             this.家政财务报表TToolStripMenuItem.Name = "家政财务报表TToolStripMenuItem";
-            this.家政财务报表TToolStripMenuItem.Size = new System.Drawing.Size(195, 38);
+            this.家政财务报表TToolStripMenuItem.Size = new System.Drawing.Size(195, 35);
             this.家政财务报表TToolStripMenuItem.Text = "家政财务报表(&t)";
+            // 
+            // MenuMoneyManage
+            // 
+            this.MenuMoneyManage.Name = "MenuMoneyManage";
+            this.MenuMoneyManage.Size = new System.Drawing.Size(280, 38);
+            this.MenuMoneyManage.Text = "交易统计与查询";
+            this.MenuMoneyManage.Click += new System.EventHandler(this.MenuMoneyManage_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -105,31 +112,31 @@
             this.注册产品ToolStripMenuItem,
             this.CtmHelpItemAbout});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(105, 38);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(105, 35);
             this.帮助ToolStripMenuItem.Text = "帮助(&h)";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.关于ToolStripMenuItem.Text = "查看帮助";
             // 
             // 发送反馈ToolStripMenuItem
             // 
             this.发送反馈ToolStripMenuItem.Name = "发送反馈ToolStripMenuItem";
-            this.发送反馈ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.发送反馈ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.发送反馈ToolStripMenuItem.Text = "发送反馈";
             // 
             // 注册产品ToolStripMenuItem
             // 
             this.注册产品ToolStripMenuItem.Name = "注册产品ToolStripMenuItem";
-            this.注册产品ToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.注册产品ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.注册产品ToolStripMenuItem.Text = "注册产品";
             // 
             // CtmHelpItemAbout
             // 
             this.CtmHelpItemAbout.Name = "CtmHelpItemAbout";
-            this.CtmHelpItemAbout.Size = new System.Drawing.Size(268, 38);
+            this.CtmHelpItemAbout.Size = new System.Drawing.Size(208, 38);
             this.CtmHelpItemAbout.Text = "关于";
             this.CtmHelpItemAbout.Click += new System.EventHandler(this.CtmHelpItemAbout_Click);
             // 
@@ -150,13 +157,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(257, 31);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // MenuMoneyManage
-            // 
-            this.MenuMoneyManage.Name = "MenuMoneyManage";
-            this.MenuMoneyManage.Size = new System.Drawing.Size(280, 38);
-            this.MenuMoneyManage.Text = "交易统计与查询";
-            this.MenuMoneyManage.Click += new System.EventHandler(this.MenuMoneyManage_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -164,8 +164,8 @@
             this.ClientSize = new System.Drawing.Size(1597, 811);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
-            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "家政财务管理系统";

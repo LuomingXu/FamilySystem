@@ -20,11 +20,14 @@ namespace FamilySystem
             InitializeComponent();
         }
 
-        public FormInsertCardInfo(string strUserName, Form main)
+        private INterface DataChange;
+
+        public FormInsertCardInfo(INterface DataChange,string strUserName, Form main)
         {
             InitializeComponent();
             this.strUserName = strUserName;
             this.MdiParent = main;
+            this.DataChange = DataChange;
         }
         
         /// <summary>
@@ -113,6 +116,11 @@ namespace FamilySystem
                 LblConfirmCardNumber.Visible = true;
                 BtnConfirm.Enabled = true;
             }
+        }
+
+        private void FormInsertCardInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DataChange.ChangeDataGridView(excute.GetAllCardInfo());
         }
     }
 }

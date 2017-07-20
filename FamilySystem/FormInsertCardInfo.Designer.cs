@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblConfirmCardNumber = new System.Windows.Forms.Label();
+            this.TxtCardPWD = new System.Windows.Forms.TextBox();
+            this.TxtCardName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.TxtWhoHoldCard = new System.Windows.Forms.TextBox();
+            this.TxtBalance = new System.Windows.Forms.TextBox();
+            this.CmbBankName = new System.Windows.Forms.ComboBox();
+            this.LblWhoCreatCard = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnConfirm = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
-            this.LblWhoCreatCard = new System.Windows.Forms.Label();
-            this.TxtCardName = new System.Windows.Forms.TextBox();
-            this.TxtCardPWD = new System.Windows.Forms.TextBox();
-            this.CmbBankName = new System.Windows.Forms.ComboBox();
-            this.TxtBalance = new System.Windows.Forms.TextBox();
-            this.TxtWhoHoldCard = new System.Windows.Forms.TextBox();
-            this.LblConfirmCardNumber = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,23 +65,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "存储卡信息添加";
             // 
-            // label1
+            // LblConfirmCardNumber
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "卡号";
+            this.LblConfirmCardNumber.AutoSize = true;
+            this.LblConfirmCardNumber.Location = new System.Drawing.Point(255, 130);
+            this.LblConfirmCardNumber.Name = "LblConfirmCardNumber";
+            this.LblConfirmCardNumber.Size = new System.Drawing.Size(131, 37);
+            this.LblConfirmCardNumber.TabIndex = 5;
+            this.LblConfirmCardNumber.Text = "label7";
+            this.LblConfirmCardNumber.Visible = false;
             // 
-            // label2
+            // TxtCardPWD
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(72, 169);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 37);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "密码";
+            this.TxtCardPWD.Location = new System.Drawing.Point(255, 184);
+            this.TxtCardPWD.Name = "TxtCardPWD";
+            this.TxtCardPWD.Size = new System.Drawing.Size(227, 50);
+            this.TxtCardPWD.TabIndex = 4;
+            // 
+            // TxtCardName
+            // 
+            this.TxtCardName.Location = new System.Drawing.Point(254, 68);
+            this.TxtCardName.Name = "TxtCardName";
+            this.TxtCardName.Size = new System.Drawing.Size(227, 50);
+            this.TxtCardName.TabIndex = 3;
+            this.TxtCardName.TextChanged += new System.EventHandler(this.TxtCardName_TextChanged);
             // 
             // panel1
             // 
@@ -98,23 +105,47 @@
             this.panel1.Size = new System.Drawing.Size(567, 390);
             this.panel1.TabIndex = 2;
             // 
-            // label3
+            // TxtWhoHoldCard
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 37);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "银行名称";
+            this.TxtWhoHoldCard.Location = new System.Drawing.Point(235, 226);
+            this.TxtWhoHoldCard.Name = "TxtWhoHoldCard";
+            this.TxtWhoHoldCard.Size = new System.Drawing.Size(228, 50);
+            this.TxtWhoHoldCard.TabIndex = 7;
             // 
-            // label4
+            // TxtBalance
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 135);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 37);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "卡内余额";
+            this.TxtBalance.Location = new System.Drawing.Point(235, 135);
+            this.TxtBalance.Name = "TxtBalance";
+            this.TxtBalance.Size = new System.Drawing.Size(228, 50);
+            this.TxtBalance.TabIndex = 6;
+            // 
+            // CmbBankName
+            // 
+            this.CmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbBankName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CmbBankName.FormattingEnabled = true;
+            this.CmbBankName.Location = new System.Drawing.Point(217, 45);
+            this.CmbBankName.Name = "CmbBankName";
+            this.CmbBankName.Size = new System.Drawing.Size(322, 41);
+            this.CmbBankName.TabIndex = 5;
+            // 
+            // LblWhoCreatCard
+            // 
+            this.LblWhoCreatCard.AutoSize = true;
+            this.LblWhoCreatCard.Location = new System.Drawing.Point(236, 314);
+            this.LblWhoCreatCard.Name = "LblWhoCreatCard";
+            this.LblWhoCreatCard.Size = new System.Drawing.Size(202, 37);
+            this.LblWhoCreatCard.TabIndex = 4;
+            this.LblWhoCreatCard.Text = "建卡人显示";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(41, 314);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 37);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "建卡人";
             // 
             // label5
             // 
@@ -125,14 +156,41 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "持卡人";
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 314);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 37);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "建卡人";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 135);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(165, 37);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "卡内余额";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(165, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "银行名称";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(72, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 37);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "密码";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(72, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "卡号";
             // 
             // BtnConfirm
             // 
@@ -156,64 +214,6 @@
             this.BtnCancel.UseVisualStyleBackColor = true;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // LblWhoCreatCard
-            // 
-            this.LblWhoCreatCard.AutoSize = true;
-            this.LblWhoCreatCard.Location = new System.Drawing.Point(236, 314);
-            this.LblWhoCreatCard.Name = "LblWhoCreatCard";
-            this.LblWhoCreatCard.Size = new System.Drawing.Size(202, 37);
-            this.LblWhoCreatCard.TabIndex = 4;
-            this.LblWhoCreatCard.Text = "建卡人显示";
-            // 
-            // TxtCardName
-            // 
-            this.TxtCardName.Location = new System.Drawing.Point(254, 68);
-            this.TxtCardName.Name = "TxtCardName";
-            this.TxtCardName.Size = new System.Drawing.Size(227, 50);
-            this.TxtCardName.TabIndex = 3;
-            this.TxtCardName.TextChanged += new System.EventHandler(this.TxtCardName_TextChanged);
-            // 
-            // TxtCardPWD
-            // 
-            this.TxtCardPWD.Location = new System.Drawing.Point(255, 184);
-            this.TxtCardPWD.Name = "TxtCardPWD";
-            this.TxtCardPWD.Size = new System.Drawing.Size(227, 50);
-            this.TxtCardPWD.TabIndex = 4;
-            // 
-            // CmbBankName
-            // 
-            this.CmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbBankName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CmbBankName.FormattingEnabled = true;
-            this.CmbBankName.Location = new System.Drawing.Point(217, 45);
-            this.CmbBankName.Name = "CmbBankName";
-            this.CmbBankName.Size = new System.Drawing.Size(322, 41);
-            this.CmbBankName.TabIndex = 5;
-            // 
-            // TxtBalance
-            // 
-            this.TxtBalance.Location = new System.Drawing.Point(235, 135);
-            this.TxtBalance.Name = "TxtBalance";
-            this.TxtBalance.Size = new System.Drawing.Size(228, 50);
-            this.TxtBalance.TabIndex = 6;
-            // 
-            // TxtWhoHoldCard
-            // 
-            this.TxtWhoHoldCard.Location = new System.Drawing.Point(235, 226);
-            this.TxtWhoHoldCard.Name = "TxtWhoHoldCard";
-            this.TxtWhoHoldCard.Size = new System.Drawing.Size(228, 50);
-            this.TxtWhoHoldCard.TabIndex = 7;
-            // 
-            // LblConfirmCardNumber
-            // 
-            this.LblConfirmCardNumber.AutoSize = true;
-            this.LblConfirmCardNumber.Location = new System.Drawing.Point(255, 130);
-            this.LblConfirmCardNumber.Name = "LblConfirmCardNumber";
-            this.LblConfirmCardNumber.Size = new System.Drawing.Size(131, 37);
-            this.LblConfirmCardNumber.TabIndex = 5;
-            this.LblConfirmCardNumber.Text = "label7";
-            this.LblConfirmCardNumber.Visible = false;
-            // 
             // FormInsertCardInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -227,6 +227,7 @@
             this.Name = "FormInsertCardInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormInsertCardInfo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormInsertCardInfo_FormClosed);
             this.Load += new System.EventHandler(this.FormInsertCardInfo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

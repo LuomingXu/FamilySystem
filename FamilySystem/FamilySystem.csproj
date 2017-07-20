@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>64x64.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PasswordSecurity">
       <HintPath>..\Security\PasswordSecurity.dll</HintPath>
@@ -78,11 +81,23 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormModifyCardPWD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyCardPWD.Designer.cs">
+      <DependentUpon>FormModifyCardPWD.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormModifyPWD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormModifyPWD.Designer.cs">
       <DependentUpon>FormModifyPWD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormModifyWhoHoldCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyWhoHoldCard.Designer.cs">
+      <DependentUpon>FormModifyWhoHoldCard.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRegister.cs">
       <SubType>Form</SubType>
@@ -129,8 +144,14 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyCardPWD.resx">
+      <DependentUpon>FormModifyCardPWD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormModifyPWD.resx">
       <DependentUpon>FormModifyPWD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyWhoHoldCard.resx">
+      <DependentUpon>FormModifyWhoHoldCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegister.resx">
       <DependentUpon>FormRegister.cs</DependentUpon>
@@ -174,6 +195,9 @@
       <Project>{2739f2f6-15f7-4270-aa8b-8cbc2c73f939}</Project>
       <Name>UserInfo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="64x64.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

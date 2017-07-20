@@ -11,7 +11,7 @@ using BLL;
 
 namespace FamilySystem
 {
-    public partial class FormCardManager : Form
+    public partial class FormCardManager : Form,INterface
     {
         public FormCardManager()
         {
@@ -19,6 +19,7 @@ namespace FamilySystem
         }
 
         private string strUserName = string.Empty;
+        private string strSelectedCardNumber = string.Empty;
 
         public FormCardManager(string strUserName)
         {
@@ -26,7 +27,14 @@ namespace FamilySystem
             this.strUserName = strUserName;
         }
 
+        public void ChangeDataGridView(DataTable dt)
+        {
+            dataGridView1.DataSource = dt;
+        }
+
         FormInsertCardInfo FrmInserCardInfo = null;
+        FormModifyCardPWD FrmModifyCardPWD = new FormModifyCardPWD();
+        FormModifyWhoHoldCard FrmModifyHoldPerson = new FormModifyWhoHoldCard();
 
         SQLExcute excute = new SQLExcute();
 
@@ -48,14 +56,14 @@ namespace FamilySystem
         {
             if (FrmInserCardInfo == null)
             {
-                FrmInserCardInfo = new FormInsertCardInfo(strUserName,this.MdiParent);
+                FrmInserCardInfo = new FormInsertCardInfo(this,strUserName,this.MdiParent);
                 FrmInserCardInfo.Show();
             }
             else
             {
                 if (FrmInserCardInfo.IsDisposed == true)
                 {
-                    FrmInserCardInfo = new FormInsertCardInfo(strUserName,this.MdiParent);
+                    FrmInserCardInfo = new FormInsertCardInfo(this,strUserName,this.MdiParent);
                     FrmInserCardInfo.Show();
                 }
                 else
@@ -67,6 +75,11 @@ namespace FamilySystem
 
         private void menuStripSearch_Click(object sender, EventArgs e)
         {
+            if (toolStripTextBox1.Text.Trim().Equals("all"))
+            {
+                dataGridView1.DataSource = excute.GetAllCardInfo();
+                return;
+            }
             dataGridView1.DataSource = excute.GetCardInfoByNumber(toolStripTextBox1.Text.Trim());
         }
 
@@ -82,5 +95,42 @@ namespace FamilySystem
                 toolStripTextBox1.Text = "请在此输入查询卡号...";
             }
         }
+
+        private void cmsBtnModifyPWD_Click(object sender, EventArgs e)
+        {
+            FrmModifyCardPWD.Close();
+            FrmModifyHoldPerson.Close();
+            FrmModifyCardPWD = new FormModifyCardPWD(strSelectedCardNumber, this.MdiParent);
+            FrmModifyCardPWD.Show();
+        }
+
+        private void cmsBtnModifyWhoHoldCard_Click(object sender, EventArgs e)
+        {
+            FrmModifyHoldPerson.Close();
+            FrmModifyCardPWD.Close();
+            FrmModifyHoldPerson = new FormModifyWhoHoldCard(this,strSelectedCardNumber, this.MdiParent);
+            FrmModifyHoldPerson.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string strTemp = string.Empty;
+            //左键点击, 选择一行数据
+            if (e.RowIndex > -1)
+            {
+                strSelectedCardNumber = Convert.ToString(dataGridView1.CurrentRow.Cells["CardNumber"].Value);
+            }
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                strSelectedCardNumber = Convert.ToString(dataGridView1.CurrentRow.Cells["CardNumber"].Value);
+            }
+        }
+
+        
     }
 }
