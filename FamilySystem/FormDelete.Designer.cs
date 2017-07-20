@@ -92,6 +92,7 @@
             this.Name = "FormDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FromDelete";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDelete_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

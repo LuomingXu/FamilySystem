@@ -112,6 +112,24 @@ namespace FamilySystem
             FrmModifyHoldPerson.Show();
         }
 
+        private void cmsBtnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult ret;
+            ret = MessageBox.Show("确定删除\"" + strSelectedCardNumber + "\"的信息吗??", 
+                "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (ret.Equals(DialogResult.Yes))
+            {
+                if (excute.DeleteCardInfo(strSelectedCardNumber))
+                {
+                    MessageBox.Show("成功删除\""+strSelectedCardNumber+"\"的信息",
+                   "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    dataGridView1.DataSource = excute.GetAllCardInfo();
+                }
+            }
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string strTemp = string.Empty;

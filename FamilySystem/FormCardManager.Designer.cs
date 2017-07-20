@@ -47,6 +47,7 @@
             this.cmsDataGird = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsBtnModifyPWD = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBtnModifyWhoHoldCard = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBtnDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -197,23 +198,31 @@
             this.cmsDataGird.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsDataGird.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsBtnModifyPWD,
-            this.cmsBtnModifyWhoHoldCard});
+            this.cmsBtnModifyWhoHoldCard,
+            this.cmsBtnDelete});
             this.cmsDataGird.Name = "cmsDataGird";
-            this.cmsDataGird.Size = new System.Drawing.Size(209, 76);
+            this.cmsDataGird.Size = new System.Drawing.Size(245, 156);
             // 
             // cmsBtnModifyPWD
             // 
             this.cmsBtnModifyPWD.Name = "cmsBtnModifyPWD";
-            this.cmsBtnModifyPWD.Size = new System.Drawing.Size(208, 36);
+            this.cmsBtnModifyPWD.Size = new System.Drawing.Size(244, 36);
             this.cmsBtnModifyPWD.Text = "修改密码";
             this.cmsBtnModifyPWD.Click += new System.EventHandler(this.cmsBtnModifyPWD_Click);
             // 
             // cmsBtnModifyWhoHoldCard
             // 
             this.cmsBtnModifyWhoHoldCard.Name = "cmsBtnModifyWhoHoldCard";
-            this.cmsBtnModifyWhoHoldCard.Size = new System.Drawing.Size(208, 36);
+            this.cmsBtnModifyWhoHoldCard.Size = new System.Drawing.Size(244, 36);
             this.cmsBtnModifyWhoHoldCard.Text = "修改持卡人";
             this.cmsBtnModifyWhoHoldCard.Click += new System.EventHandler(this.cmsBtnModifyWhoHoldCard_Click);
+            // 
+            // cmsBtnDelete
+            // 
+            this.cmsBtnDelete.Name = "cmsBtnDelete";
+            this.cmsBtnDelete.Size = new System.Drawing.Size(244, 36);
+            this.cmsBtnDelete.Text = "删除卡片信息";
+            this.cmsBtnDelete.Click += new System.EventHandler(this.cmsBtnDelete_Click);
             // 
             // FormCardManager
             // 
@@ -259,5 +268,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WhoCreatCard;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardPWD;
+        private System.Windows.Forms.ToolStripMenuItem cmsBtnDelete;
     }
 }

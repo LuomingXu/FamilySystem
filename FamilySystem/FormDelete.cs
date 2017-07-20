@@ -13,10 +13,13 @@ namespace FamilySystem
 {
     public partial class FormDelete : Form
     {
-        public FormDelete(string strUserName)
+        private INterface DataChange;
+
+        public FormDelete(INterface DataChange,string strUserName)
         {
             InitializeComponent();
             this.strUserName = strUserName;
+            this.DataChange = DataChange;
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -50,6 +53,12 @@ namespace FamilySystem
                         "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void FormDelete_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SQLExcute excute = new SQLExcute();
+            DataChange.ChangeDataGridView(excute.GetAllUserInfo().Tables[0]);
         }
     }
 }

@@ -180,6 +180,19 @@ namespace BLL
         }
 
         /// <summary>
+        /// 删除存储卡信息
+        /// </summary>
+        /// <param name="strCardNumber">卡号</param>
+        /// <returns>是否成功删除</returns>
+        public bool DeleteCardInfo(string strCardNumber)
+        {
+            string strSQL = $"delete from CardInfo " +
+                $"where CardNumber='{strCardNumber}'";
+
+            return access.SQLServer(strSQL) == 1;
+        }
+
+        /// <summary>
         /// 更新用户信息
         /// </summary>
         /// <param name="user">用户类</param>

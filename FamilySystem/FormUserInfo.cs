@@ -184,6 +184,8 @@ namespace FamilySystem
                     {
                         MessageBox.Show("删除成功!",
                             "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        GetAllUserInfo();
                     }
                     else
                     {
@@ -193,7 +195,7 @@ namespace FamilySystem
                 }
             }
 
-            GetAllUserInfo();
+            
         }
 
         private void TxtSearch_KeyPress(object sender, KeyPressEventArgs e)
