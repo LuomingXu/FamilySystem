@@ -35,6 +35,7 @@ namespace FamilySystem
             string strPWD = TxtPWD.Text.Trim();
 
             bool isPwdRight;
+            bool isEnable;
 
             DataSet ds = new DataSet();
             SQLExcute excute = new SQLExcute();
@@ -42,17 +43,27 @@ namespace FamilySystem
             string strPWDFromServer = Convert.ToString(ds.Tables[0].Rows[0][0]);
 
             isPwdRight = PasswordStorage.VerifyPassword(strPWD, strPWDFromServer);
+            isEnable = excute.ConfirmUserEnable(strUserName);
 
             if (isPwdRight)
             {
-                MessageBox.Show("登录成功!",
+                if (isEnable)
+                {
+                    MessageBox.Show("登录成功!",
                     "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FormMain FrmMain = new FormMain();
-                FrmMain.toolStripStatusLabel1.Text = "欢迎您:" + strUserName;
+                    FormMain FrmMain = new FormMain();
+                    FrmMain.toolStripStatusLabel1.Text = "欢迎您:" + strUserName;
 
-                FrmMain.Show();
-                Hide();
+                    FrmMain.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("用户未启用!",
+                        "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {

@@ -127,6 +127,20 @@ namespace BLL
         }
 
         /// <summary>
+        /// 判断用户是否可用
+        /// </summary>
+        /// <param name="strUserName"></param>
+        /// <returns></returns>
+        public bool ConfirmUserEnable(string strUserName)
+        {
+            string strSQL = $"select Enable " +
+                $"from tb_Users " +
+                $"where UserName='{strUserName}'";
+
+            return Convert.ToString(access.SQLServer(strSQL, "判断用户是否可用表").Tables["判断用户是否可用表"].Rows[0][0]).Equals("是");
+        }
+
+        /// <summary>
         /// 判断存储号是否存在
         /// </summary>
         /// <param name="strCardNumber">卡片号</param>

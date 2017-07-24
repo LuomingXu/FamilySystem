@@ -52,7 +52,11 @@ namespace FamilySystem
             TxtSearch.Text = "请在此需要输入查询的用户名...";
 
             SQLExcute excute = new SQLExcute();
-            dataGridView1.DataSource = excute.GetAllUserInfo().Tables["用户信息表"];
+            DataTable dt = new DataTable();
+            dt = excute.GetAllUserInfo().Tables["用户信息表"];
+            dataGridView1.DataSource = dt;
+
+            toolStripStatusLabel1.Text += "      共计加载了" + dt.DefaultView.Count.ToString() + "条数据";
 
             bool isAdm = excute.IsAdm(strUserName);
 
